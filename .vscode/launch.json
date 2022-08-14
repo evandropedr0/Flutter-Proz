@@ -1,0 +1,17 @@
+{
+    // Use o IntelliSense para saber mais sobre os atributos possíveis.
+    // Focalizar para exibir as descrições dos atributos existentes.
+    // Para obter mais informações, acesse: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "Exercicios_semana_2",
+            "cwd": "10-08-2022\\dart_application_1",
+            "request": "launch",
+            "type": "dart",
+            "console": "terminal",
+            "program": "bin/questao8.dart"
+        }
+    ]
+}
