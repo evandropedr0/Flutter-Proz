@@ -7,11 +7,11 @@
 
         {
             "name": "Proz",
-            "cwd": "17-08-2022\\project_17_08_2022",
+            "cwd": "lista_de_exercicios_1\\lista1",
             "request": "launch",
             "type": "dart",
             "console": "terminal",
-            "program": "bin/project_17_08_2022.dart"
+            "program": "bin/lista1.dart"
         }
     ]
 }
