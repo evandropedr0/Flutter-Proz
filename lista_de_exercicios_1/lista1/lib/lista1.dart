@@ -60,9 +60,9 @@ double entradaDoublePositiva() {
 
 int entradaIntPositiva() {
   int entrada = int.parse(stdin.readLineSync(encoding: utf8)!);
-  while (entrada <= 0) {
+  while (entrada < 0) {
     // validação da entrada
-    print('Entrada inválida. Informe um valor positivo.');
+    print('Entrada inválida. Informe um valor maior ou igual a 0.');
     entrada = int.parse(stdin.readLineSync(encoding: utf8)!);
   }
   return entrada;
@@ -170,7 +170,7 @@ void questao6() {
   do {
     print("\x1B[2J\x1B[0;0H"); // clear entire screen, move cursor to 0;0
     print('Questão 6: Meses do ano.');
-    print('Informe um número de 1 a 12 (13 para sair):');
+    print('Informe um número de 1 a 12 (0 para sair):');
 
     mes = entradaIntPositiva();
 
@@ -211,21 +211,88 @@ void questao6() {
       case 12:
         print('O número $mes corresponde ao mês de Dezembro.');
         break;
-      case 13:
+      case 0:
         print('Saindo...');
         break;
       default:
         print('Entrada inválida. Deve ser um número de 1 a 12.');
         break;
     }
-    print('Digite qualquer valor para continuar...');
-    stdin.readLineSync()!;
-  } while (mes != 13);
+  } while (mes != 0);
 }
 
-void questao7() {}
-void questao8() {}
-void questao9() {}
+void questao7() {
+  print("\x1B[2J\x1B[0;0H"); // clear entire screen, move cursor to 0;0
+  print('Questão 7: Peso ideal.');
+  print('''
+Informe o sexo da pessoa:
+[F] Feminino
+[M] Masculino
+''');
+  String sexo = stdin.readLineSync(encoding: utf8)!;
+  while (sexo != 'M' && sexo != 'm' && sexo != 'F' && sexo != 'f') {
+    print('Entrada inválida. Tente novamente');
+    sexo = stdin.readLineSync(encoding: utf8)!;
+  }
+
+  if (sexo == 'm') {
+    sexo = 'M';
+  }
+  if (sexo == 'f') {
+    sexo = 'F';
+  }
+
+  print('Informe a altura em metros:');
+  double altura = double.parse(stdin.readLineSync(encoding: utf8)!);
+
+  double pesoIdeal;
+  if (sexo == 'M') {
+    pesoIdeal = 72.7 * altura - 58;
+    sexo = 'masculino';
+  } else {
+    pesoIdeal = 62.1 * altura - 44.7;
+    sexo = 'feminino';
+  }
+  print('''
+O peso ideal para alguém do sexo $sexo e de altura ${altura.toStringAsFixed(2)} m
+É de ${pesoIdeal.toStringAsFixed(1)} kg.
+''');
+}
+
+void questao8() {
+  print("\x1B[2J\x1B[0;0H"); // clear entire screen, move cursor to 0;0
+  print('Questão 8: Tabela de preços.');
+  print('Os preços recebem desconto a partir de R\$500.00.');
+  print('O desconto máximo é de 25%.');
+  print('Confira na tabela:');
+
+  print('Valor da compra\t-\tDesc.\t-\tValor final');
+  for (int i = 1; i <= 25; i++) {
+    double valorDaCompra = i * 100 + 400.0;
+    double desconto = 1 - i / 100.0;
+    double valorFinal = valorDaCompra * desconto;
+    print('R\$${valorDaCompra.toStringAsFixed(2)}\t-\t$i%\t-\tR\$${valorFinal.toStringAsFixed(2)}');
+  }
+}
+
+void questao9() {
+  print("\x1B[2J\x1B[0;0H"); // clear entire screen, move cursor to 0;0
+  print('Questão 9: Idade de dez pessoas.');
+
+  print('Será solicitado que informe a idade de dez pessoas.');
+  print('Ao final, será dito quantas delas é maior de idade.');
+
+  int maioresDeIdade = 0;
+  for (var i = 0; i < 10; i++) {
+    print('Informe a idade da pessoa ${i + 1}:');
+    int idade = entradaIntPositiva();
+    if (idade >= 18) {
+      maioresDeIdade += 1;
+    }
+  }
+  print('$maioresDeIdade pessoas são maiores de idade.');
+}
+
 void questao10() {}
 void questao11() {}
 void questao12() {}
