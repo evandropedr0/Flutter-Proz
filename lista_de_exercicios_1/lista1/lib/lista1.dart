@@ -279,11 +279,13 @@ void questao9() {
   print("\x1B[2J\x1B[0;0H"); // clear entire screen, move cursor to 0;0
   print('Questão 9: Idade de dez pessoas.');
 
-  print('Será solicitado que informe a idade de dez pessoas.');
+  int qtdPessoas = 10;
+
+  print('Será solicitado que informe a idade de $qtdPessoas pessoas.');
   print('Ao final, será dito quantas delas é maior de idade.');
 
   int maioresDeIdade = 0;
-  for (var i = 0; i < 10; i++) {
+  for (var i = 0; i < qtdPessoas; i++) {
     print('Informe a idade da pessoa ${i + 1}:');
     int idade = entradaIntPositiva();
     if (idade >= 18) {
@@ -293,9 +295,131 @@ void questao9() {
   print('$maioresDeIdade pessoas são maiores de idade.');
 }
 
-void questao10() {}
-void questao11() {}
-void questao12() {}
-void questao13() {}
+void questao10() {
+  print("\x1B[2J\x1B[0;0H"); // clear entire screen, move cursor to 0;0
+  print('Questão 10: Faixas etárias.');
+
+  int qtdPessoas = 15;
+
+  print('Será solicitado que informe a idade de $qtdPessoas pessoas.');
+  print('Ao final, será mostrado quantas pessoas pertencem a diversas faixas etárias');
+  print('e a respectiva porcentagem.');
+
+  // contadores para cada faixa etária
+  int contFaixa1 = 0, contFaixa2 = 0, contFaixa3 = 0, contFaixa4 = 0, contFaixa5 = 0;
+
+  for (var i = 0; i < qtdPessoas; i++) {
+    print('Informe a idade da pessoa ${i + 1}:');
+    int idade = entradaIntPositiva();
+    if (idade <= 15) {
+      contFaixa1 += 1;
+    } else if (idade <= 30) {
+      contFaixa2 += 1;
+    } else if (idade <= 45) {
+      contFaixa3 += 1;
+    } else if (idade <= 60) {
+      contFaixa4 += 1;
+    } else {
+      contFaixa5 += 1;
+    }
+  }
+
+  print('Total de pessoas: $qtdPessoas | Porcentagem: ${(qtdPessoas * 100 / qtdPessoas).toStringAsFixed(2)} %');
+  print('Faixas etárias:');
+  print(' -> Entre 00 e 15 anos: $contFaixa1 | Porcentagem: ${(contFaixa1 * 100 / qtdPessoas).toStringAsFixed(2)} %');
+  print(' -> Entre 16 e 30 anos: $contFaixa2 | Porcentagem: ${(contFaixa2 * 100 / qtdPessoas).toStringAsFixed(2)} %');
+  print(' -> Entre 31 e 45 anos: $contFaixa3 | Porcentagem: ${(contFaixa3 * 100 / qtdPessoas).toStringAsFixed(2)} %');
+  print(' -> Entre 46 e 60 anos: $contFaixa4 | Porcentagem: ${(contFaixa4 * 100 / qtdPessoas).toStringAsFixed(2)} %');
+  print(' -> Maiores de 60 anos: $contFaixa5 | Porcentagem: ${(contFaixa5 * 100 / qtdPessoas).toStringAsFixed(2)} %');
+}
+
+void questao11() {
+  print("\x1B[2J\x1B[0;0H"); // clear entire screen, move cursor to 0;0
+  print('Questão 11: Números pares e ímpares até determinado valor.');
+  print('Será solicitado um inteiro e em seguida será mostrado todos os inteiros');
+  print('entre 0 e o número solicitado.');
+  print('\nInforme um número inteiro positivo:');
+
+  int entrada = entradaIntPositiva();
+
+  if (entrada == 0 || entrada == 1) {
+    print('Não há números inteiros entre 0 e o número informado.');
+  } else {
+    // print('Números ímpares entre 0 e o número informado:');
+    // for (int i = 1; i < entrada; i++) {
+    //   if (i % 2 == 1) {
+    //     print(i);
+    //   }
+    // }
+    // print('Números pares entre 0 e o número informado:');
+    // for (int i = 1; i < entrada; i++) {
+    //   if (i % 2 == 0) {
+    //     print(i);
+    //   }
+    // }
+    stdout.write('Ímpares: ');
+    for (int i = 1; i < entrada; i++) {
+      if (i % 2 == 1) {
+        stdout.write('$i; ');
+      }
+    }
+    stdout.write('\nPares: ');
+    for (int i = 1; i < entrada; i++) {
+      if (i % 2 == 0) {
+        stdout.write('$i; ');
+      }
+    }
+    print('\n');
+  }
+}
+
+void questao12() {
+  print("\x1B[2J\x1B[0;0H"); // clear entire screen, move cursor to 0;0
+  print('Questão 12: Média de idades.');
+  print('Serão solicitadas várias idades e depois será informada a média delas.');
+  print('');
+
+  var entrada;
+  double mediaIdades = 0;
+  int qtdIdades = 0;
+  do {
+    print('Informe a ${qtdIdades + 1}ª idade ou digite 0 para finalizar:');
+    entrada = entradaIntPositiva();
+
+    if (entrada != 0) {
+      mediaIdades += entrada;
+      qtdIdades++;
+    }
+  } while (entrada != 0);
+
+  if (qtdIdades != 0) {
+    mediaIdades = mediaIdades / qtdIdades;
+    print('A média das idades informadas é: ${mediaIdades.toStringAsFixed(2)}\n');
+  } else {
+    print('A média das idades informadas é: 0\n');
+  }
+}
+
+void questao13() {
+  print("\x1B[2J\x1B[0;0H"); // clear entire screen, move cursor to 0;0
+  print('Questão 13: ');
+  print('Soma dos números ímpares de 1 a 500 que são múltiplos de 3.');
+  print('');
+
+  int soma = 0;
+
+  for (int i = 1; i <= 500; i++) {
+    if (i % 3 == 0) {
+      // múltiplo de 3
+      if (i % 2 == 1) {
+        // ímpar
+        print('Somando $i');
+        soma += i;
+      }
+    }
+  }
+  print('\nA soma dos números acima é: $soma.');
+}
+
 void questao14() {}
 void questao15() {}
