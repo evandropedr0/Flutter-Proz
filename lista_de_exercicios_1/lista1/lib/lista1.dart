@@ -421,5 +421,55 @@ void questao13() {
   print('\nA soma dos números acima é: $soma.');
 }
 
-void questao14() {}
-void questao15() {}
+void questao14() {
+  print("\x1B[2J\x1B[0;0H"); // clear entire screen, move cursor to 0;0
+  print('Questão 14: Fatorial');
+  print('');
+  print('Informe um número inteiro positivo para calcular seu fatorial:');
+
+  int num = entradaIntPositiva();
+
+  double fatorial = 1;
+
+  stdout.write('$num! = ');
+  for (int i = num; i > 1; i--) {
+    fatorial *= i;
+    if (i == 2) {
+      stdout.write('$i x 1 = ');
+      break;
+    }
+    stdout.write('$i x ');
+  }
+  print(fatorial.toStringAsFixed(0));
+}
+
+void questao15() {
+  print("\x1B[2J\x1B[0;0H"); // clear entire screen, move cursor to 0;0
+  print('Questão 15: Maior e menor número.');
+
+  int max = 15;
+
+  print('Serão solicitados $max números.');
+  print('Ao final, será mostrado o maior e o menor número informado.');
+
+  // contadores para cada faixa etária
+  double maior, menor;
+
+  print('Informe o 1º número:');
+  double entrada = double.parse(stdin.readLineSync(encoding: utf8)!);
+  maior = entrada;
+  menor = entrada;
+
+  for (int i = 1; i < max; i++) {
+    print('Informe o ${i + 1}º número:');
+    double entrada = double.parse(stdin.readLineSync(encoding: utf8)!);
+
+    if (entrada > maior) {
+      maior = entrada;
+    } else if (entrada < menor) {
+      menor = entrada;
+    }
+  }
+  print('Maior número inserido: $maior');
+  print('Menor número inserido: $menor');
+}
