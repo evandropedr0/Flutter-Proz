@@ -6,11 +6,11 @@
     "configurations": [
         {
             "name": "Proz",
-            "cwd": "22-08-2022\\projeto_22_08_2022",
+            "cwd": "Semana_5\\semana5",
             "request": "launch",
             "type": "dart",
             "console": "terminal",
-            "program": "bin/projeto_22_08_2022.dart"
+            "program": "bin/semana5.dart"
         }
     ]
 }
