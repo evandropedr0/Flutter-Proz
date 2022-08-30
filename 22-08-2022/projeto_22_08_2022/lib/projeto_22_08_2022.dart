@@ -77,7 +77,10 @@ void updateValue({required Map<String, String> map, required String mapName, req
   }
 }
 
-List<String> getValuesFromUser({required List<String> keys, required String mapName}) {
+List<String> getValuesFromUser({
+  required List<String> keys,
+  required String mapName,
+}) {
   List<String> values = [];
 
   for (int i = 1; i < keys.length; i++) {
@@ -92,8 +95,11 @@ List<String> getValuesFromUser({required List<String> keys, required String mapN
   return values;
 }
 
-void addItem(
-    {required List<Map<String, String>> listOfMaps, required List<String> keys, required List<String> values}) {
+void addItem({
+  required List<Map<String, String>> listOfMaps,
+  required List<String> keys,
+  required List<String> values,
+}) {
   ///Gets a list of maps <String, String> whose name is mapName
   ///and a list of keys <String> and adds a map with the specified keys in the list
 
@@ -117,8 +123,11 @@ void addItem(
   listOfMaps.add(map);
 }
 
-List<Map<String, String>> searchByKey(
-    {required List<Map<String, String>> listOfMaps, required String key, required String mapName}) {
+List<Map<String, String>> searchByKey({
+  required List<Map<String, String>> listOfMaps,
+  required String key,
+  required String mapName,
+}) {
   print('Informe o $key do $mapName:');
   String input = stdin.readLineSync(encoding: utf8)!;
 
@@ -159,7 +168,9 @@ String undoCamelCase({required String str}) {
   return output;
 }
 
-void showListOfMaps({required List<Map<String, String>> listOfMaps}) {
+void showListOfMaps({
+  required List<Map<String, String>> listOfMaps,
+}) {
   listOfMaps.forEach((curso) {
     curso.entries.forEach((entry) {
       print('${undoCamelCase(str: entry.key)}: ${entry.value}');
@@ -168,16 +179,21 @@ void showListOfMaps({required List<Map<String, String>> listOfMaps}) {
   });
 }
 
-void removeMapsFromList(
-    {required List<Map<String, String>> listOfMaps, required List<Map<String, String>> sublistOfMaps}) {
+void removeMapsFromList({
+  required List<Map<String, String>> listOfMaps,
+  required List<Map<String, String>> sublistOfMaps,
+}) {
   sublistOfMaps.forEach((item) {
     ///Removes a sublist of maps from a list of maps
     listOfMaps.removeWhere((map) => map == item);
   });
 }
 
-Map<String, String> getMapByValue(
-    {required List<Map<String, String>> listOfMaps, required String key, required String value}) {
+Map<String, String> getMapByValue({
+  required List<Map<String, String>> listOfMaps,
+  required String key,
+  required String value,
+}) {
   /// Returns the Mao<String, String> within a List that contains the value for the specified key
   /// Example: List<Map<String, String>> champions = [{'country': 'Brazil', 'worldCupWins': '5'}, {'country': 'Italy', 'worldCupWins': '4'}]
   /// getMapByCode(listOfMaps: champions, key: 'country', value: 'Brazil') returns {'country': 'Brazil', 'worldCupWins': '5'}
