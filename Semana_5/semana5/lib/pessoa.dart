@@ -24,6 +24,10 @@ class Pessoa {
       print('Idade não pode ser negativa. Idade foi setada como 0.');
       age = 0;
       return;
+    } else if (age > 120) {
+      print('Idade não pode ser maior que 120 anos, portanto, foi definida como 120 anos.');
+      age = 120;
+      return;
     }
     _idade = age;
   }
@@ -52,7 +56,7 @@ class Pessoa {
     print('Gênero: ${_genero}');
     print('Idade: ${_idade}');
     print('Altura: ${_altura.toStringAsFixed(2)} m');
-    return super.toString();
+    return '';
   }
 
   aniversario() {
