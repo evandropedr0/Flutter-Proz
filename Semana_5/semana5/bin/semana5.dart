@@ -1,11 +1,13 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:semana5/pessoa.dart';
+import 'package:semana5/exercicios_joyclass/pessoa.dart';
 
 Pessoa registrarPessoa() {
   stdout.write('Digite o nome: ');
   String nome = stdin.readLineSync(encoding: utf8)!;
+  stdout.write('Digite o sobrenome: ');
+  String sobrenome = stdin.readLineSync(encoding: utf8)!;
   stdout.write('Digite o gênero: ');
   String genero = stdin.readLineSync(encoding: utf8)!;
   stdout.write('Digite a idade: ');
@@ -36,6 +38,7 @@ Pessoa registrarPessoa() {
 
   Pessoa pessoa = Pessoa(
     nome: nome,
+    sobrenome: sobrenome,
     genero: genero,
     idade: int.parse(idade),
     altura: double.parse(altura),
