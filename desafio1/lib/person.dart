@@ -1,4 +1,13 @@
-abstract class Person {
-  Address? address;
-  bool validateDocument();
+import 'package:desafio1/i_person.dart';
+
+import 'address.dart';
+
+enum PersonCategory {
+  individualPerson,
+  legalPerson,
+}
+
+abstract class Person implements IPerson {
+  late PersonCategory category;
+  late Address _address;
 }
