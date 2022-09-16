@@ -3,6 +3,7 @@ class Address {
   String number;
   String complement;
   String neighbourhood;
+  String city;
   String state;
   String zipCode;
 
@@ -11,6 +12,7 @@ class Address {
     required this.number,
     required this.complement,
     required this.neighbourhood,
+    required this.city,
     required this.state,
     required this.zipCode,
   });
