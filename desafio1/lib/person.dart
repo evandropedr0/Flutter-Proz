@@ -9,5 +9,9 @@ enum PersonCategory {
 
 abstract class Person implements IPerson {
   late PersonCategory category;
-  late Address _address;
+  late Address address;
+
+  Person({
+    required this.address,
+  });
 }
