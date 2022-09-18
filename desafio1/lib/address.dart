@@ -1,4 +1,4 @@
-final states = {
+const Map<int, String> states = {
   1: 'AC',
   2: 'AL',
   3: 'AP',
@@ -14,9 +14,9 @@ final states = {
   13: 'MG',
   14: 'PA',
   15: 'PB',
-  16: 'PR',
-  17: 'PE',
-  18: 'PI',
+  16: 'PE',
+  17: 'PI',
+  18: 'PR',
   19: 'RJ',
   20: 'RN',
   21: 'RS',
@@ -46,4 +46,17 @@ class Address {
     required this.state,
     required this.zipCode,
   });
+
+  String formattedZipCode() {
+    String firstPart = zipCode.substring(0, 2);
+    String secondPart = zipCode.substring(2, 5);
+    String thirdPart = zipCode.substring(5);
+
+    return '$firstPart.$secondPart-$thirdPart';
+  }
+
+  @override
+  String toString() {
+    return '$publicPlace, nº $number, $complement, $neighbourhood, $city/$state, CEP: ${formattedZipCode()}.';
+  }
 }

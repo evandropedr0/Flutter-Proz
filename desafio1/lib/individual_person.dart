@@ -45,4 +45,20 @@ class IndividualPerson extends Person {
       throw Exception('Nome não pode ficar em branco. Operação cancelada.');
     }
   }
+
+  String formattedCPF() {
+    String firstPart = _cpf!.substring(0, 3);
+    String secondPart = _cpf!.substring(3, 6);
+    String thirdPart = _cpf!.substring(6, 9);
+    String fourthPart = _cpf!.substring(9);
+    return '$firstPart.$secondPart.$thirdPart-$fourthPart';
+  }
+
+  @override
+  String toString() {
+    String output = 'Nome Completo: ${_name!.trim()}\n';
+    output += 'CPF: ${formattedCPF()}\n';
+    output += 'Endereço: ${address.toString()}\n';
+    return output;
+  }
 }

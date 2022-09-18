@@ -1,9 +1,43 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:desafio1/address.dart';
+import 'package:desafio1/company.dart';
+import 'package:desafio1/individual_person.dart';
 import 'package:desafio1/utils.dart';
 
 void main() {
-  runApp();
+  // runApp();
+  IndividualPerson person1 = IndividualPerson(
+    name: 'Evandro Pedro Alves de Mendonça',
+    cpf: '08578000439',
+    address: Address(
+      publicPlace: 'Rua Zezito Costa Rego',
+      number: '51',
+      complement: 'AP 403, Edf. São Pedro',
+      neighbourhood: 'Várzea',
+      city: 'Recife',
+      state: states[16]!,
+      zipCode: '50740010',
+    ),
+  );
+
+  final company1 = Company(
+    corporateName: 'Evandro Pedro Ltda.',
+    fantasyName: 'EPAM Industries',
+    cnpj: '87009263000140',
+    address: Address(
+      publicPlace: 'Rua dos Alfeneiros',
+      number: '4',
+      complement: 'Armário de vassouras',
+      neighbourhood: 'Surrey',
+      city: 'Little Winging',
+      state: states[15]!,
+      zipCode: '55415000',
+    ),
+    associate: person1,
+    phone: '87999096429',
+  );
+  print(company1);
 }
 
 void runApp() {
