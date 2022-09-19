@@ -57,4 +57,7 @@ class LegalPerson extends Person {
     output += 'Endereço: ${address.toString()}\n';
     return output;
   }
+
+  @override
+  String getDocument() => _cnpj!;
 }

@@ -86,4 +86,14 @@ abstract class Utils {
 
     return true;
   }
+
+  static String onlyNumbers(String input) {
+    String output = '';
+    for (int i = 0; i < input.length; i++) {
+      if (int.tryParse(input[i]) != null) {
+        output += input[i];
+      }
+    }
+    return output;
+  }
 }

@@ -16,11 +16,7 @@ class IndividualPerson extends Person {
     } else {
       throw Exception('Nome inválido.');
     }
-    if (validateDocument(document: cpf)) {
-      _cpf = cpf;
-    } else {
-      throw Exception('CPF Inválido.');
-    }
+    setCPF(cpf);
   }
 
   @override
@@ -29,7 +25,7 @@ class IndividualPerson extends Person {
   }
 
   String get cpf => _cpf!;
-  set cpf(String cpf) {
+  void setCPF(String cpf) {
     if (validateDocument(document: cpf)) {
       _cpf = cpf;
     } else {
@@ -61,4 +57,7 @@ class IndividualPerson extends Person {
     output += 'Endereço: ${address.toString()}\n';
     return output;
   }
+
+  @override
+  String getDocument() => _cpf!;
 }

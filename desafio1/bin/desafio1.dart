@@ -23,12 +23,24 @@ void runApp() {
         App.addCompany(companies);
         break;
       case '2':
-        App.searchByCompanyDocument(companies);
+        try {
+          App.searchByCompanyDocument(companies);
+        } catch (e) {
+          print(e);
+        }
         break;
       case '3':
-        App.searchByAssociateDocument(companies);
+        try {
+          App.searchByAssociateDocument(companies);
+        } catch (e) {
+          print(e);
+        }
         break;
       case '4':
+        if (companies.isEmpty) {
+          print('Não há empresas a serem listadas.');
+          break;
+        }
         App.listSortedCompanies(companies);
         break;
       case '5':

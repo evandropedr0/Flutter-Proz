@@ -1,6 +1,7 @@
 import 'package:desafio1/address.dart';
 import 'package:desafio1/company.dart';
 import 'package:desafio1/individual_person.dart';
+import 'package:desafio1/utils.dart';
 
 class MockedLists {
   static const List<Map> mockedCompanies = [
@@ -77,7 +78,7 @@ class MockedLists {
   static const List<Map> mockedIndividualPeople = [
     {
       "name": "Geraldo Gustavo Samuel Drumond",
-      "cpf": "435.298.711-50",
+      "cpf": "880.952.450-03", //"435.298.711-50",
       "neighborhood": 'Vila Lacerda',
       "zipCode": '13214-060',
       "complement": 'Casa',
@@ -126,23 +127,13 @@ class MockedLists {
     },
   ];
 
-  static String onlyNumbers(String input) {
-    String output = '';
-    for (int i = 0; i < input.length; i++) {
-      if (int.tryParse(input[i]) != null) {
-        output += input[i];
-      }
-    }
-    return output;
-  }
-
   static void populateList(List<Company> companies) {
     int i = 0;
     for (var company in mockedCompanies) {
       companies.add(Company(
         corporateName: company['corporateName'],
         fantasyName: company['fantasyName'],
-        cnpj: onlyNumbers(company['cnpj']),
+        cnpj: Utils.onlyNumbers(company['cnpj']),
         address: Address(
           publicPlace: company['street'],
           number: company['number'],
@@ -150,11 +141,11 @@ class MockedLists {
           neighborhood: company['neighborhood'],
           city: company['city'],
           state: company['state'],
-          zipCode: onlyNumbers(company['zipCode']),
+          zipCode: Utils.onlyNumbers(company['zipCode']),
         ),
         associate: IndividualPerson(
           name: mockedIndividualPeople[i]['name'],
-          cpf: onlyNumbers(mockedIndividualPeople[i]['cpf']),
+          cpf: Utils.onlyNumbers(mockedIndividualPeople[i]['cpf']),
           address: Address(
             publicPlace: mockedIndividualPeople[i]['street'],
             number: mockedIndividualPeople[i]['number'],
@@ -162,10 +153,10 @@ class MockedLists {
             neighborhood: mockedIndividualPeople[i]['neighborhood'],
             city: mockedIndividualPeople[i]['city'],
             state: mockedIndividualPeople[i]['state'],
-            zipCode: onlyNumbers(mockedIndividualPeople[i]['zipCode']),
+            zipCode: Utils.onlyNumbers(mockedIndividualPeople[i]['zipCode']),
           ),
         ),
-        phone: onlyNumbers(company['phone']),
+        phone: Utils.onlyNumbers(company['phone']),
       ));
       i++;
     }
