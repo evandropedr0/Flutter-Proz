@@ -31,8 +31,8 @@ const Map<int, String> states = {
 class Address {
   String publicPlace;
   String number;
-  String complement;
-  String neighbourhood;
+  String? complement;
+  String neighborhood;
   String city;
   String state;
   String zipCode;
@@ -40,12 +40,14 @@ class Address {
   Address({
     required this.publicPlace,
     required this.number,
-    required this.complement,
-    required this.neighbourhood,
+    String? complement,
+    required this.neighborhood,
     required this.city,
     required this.state,
     required this.zipCode,
-  });
+  }) {
+    this.complement = complement ?? '';
+  }
 
   String formattedZipCode() {
     String firstPart = zipCode.substring(0, 2);
@@ -57,6 +59,9 @@ class Address {
 
   @override
   String toString() {
-    return '$publicPlace, nº $number, $complement, $neighbourhood, $city/$state, CEP: ${formattedZipCode()}.';
+    if (complement!.isEmpty) {
+      return '$publicPlace, nº $number, $neighborhood, $city/$state, CEP: ${formattedZipCode()}.';
+    }
+    return '$publicPlace, nº $number, $complement, $neighborhood, $city/$state, CEP: ${formattedZipCode()}.';
   }
 }
